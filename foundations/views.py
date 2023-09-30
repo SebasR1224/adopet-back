@@ -1,6 +1,8 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from rest_framework import viewsets
+from .serializer import FoundationSerializer
+from .models import Foundation
 
 # Create your views here.
-def helloworld(request):
-    return HttpResponse('Hello world')
+class FoundationView(viewsets.ModelViewSet):
+    serializer_class = FoundationSerializer
+    queryset = Foundation.objects.all()
